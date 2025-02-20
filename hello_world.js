@@ -36,7 +36,7 @@ looker.plugins.visualizations.add({
 
         // Extract all dimensions and measures dynamically
         const dimensions = queryResponse.fields.dimensions;
-        const measures = queryResponse.fields.measures;
+        const measures = [...queryResponse.fields.measures, ...queryResponse.fields.table_calculations];
         
         if (dimensions.length === 0 || measures.length === 0) {
           this.addError({ title: "No Data", message: "This visualization requires at least one dimension and one measure." });
